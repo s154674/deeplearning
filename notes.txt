@@ -1,0 +1,10 @@
+Evaluating generelization:
+Train with same background, change backgrouns for evaluation / check how well it does in evauluation with and without background
+
+Compare with different networks, with/without data augmentation.
+
+make sure action space is correct.
+
+train with different seeds to make sure its not a lucky batch
+
+make sure test set and validation set are different.

@@ -11,14 +11,14 @@ value_coef = .5
 entropy_coef = .01
 #TODO: choose appropriate values for c1 and c2
 c1 = 0.5
-c2 = 0.5
+c2 = 0.1
 
 num_actions = 4
 in_channels = 3
 feature_dim = 64
 
 ### num_levels easy = 200, hard = 500
-make_env_kwargs = {'num_levels':1000, 'env_name':'maze', 'use_backgrounds':False}
+make_env_kwargs = {'num_levels':200, 'env_name':'maze', 'use_backgrounds':False}
 
 
 ####################################################
@@ -164,9 +164,9 @@ while step < total_steps:
       new_log_prob = new_dist.log_prob(b_action)
 
       #rewards to go
-      r_t = torch.tensor(compute_returns(b_returns, 0.09)).cuda()
+      r_t = torch.tensor(compute_returns(b_returns, 0.99)).cuda() # changed to 0.99 from 0.09 after trying to train 3 times
       #advantage estimate = discounted_rewards - value_function or baseline estimate
-      a_t = r_t - new_value
+      a_t = r_t - b_value
 
       # Clipped policy objective
       #r_theta=(b_log_prob-new_log_prob).exp()
@@ -176,7 +176,7 @@ while step < total_steps:
       pi_loss =  torch.mean(clip(r_theta, a_t, eps))
 
       # # Clipped value function objective
-      value_loss = torch.mean((r_t - new_value)**2)
+      value_loss = torch.mean((r_t - b_value)**2)
 
       # Entropy loss
       # entropy_loss = torch.mean(torch.tensor(nn.CrossEntropyLoss()).cuda())
@@ -187,7 +187,7 @@ while step < total_steps:
 
       # Backpropagate losses
       # loss = -torch.mean(torch.mul(torch.log(b_log_prob), b_returns))
-      loss = -(pi_loss - 0.5 * value_loss + 0.01 * ce_loss)
+      loss = -(pi_loss - c1 * value_loss + c2 * ce_loss)
       loss.backward()
 
       # Clip gradients
@@ -203,4 +203,5 @@ while step < total_steps:
 
 print('Completed training!')
 from datetime import datetime
+print(datetime.utcnow().replace(microsecond=0))
 torch.save(policy.state_dict, f'checkpoint{datetime.utcnow().replace(microsecond=0)}.pt')
