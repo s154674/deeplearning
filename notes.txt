@@ -14,5 +14,8 @@ JobID's:
 11159640 new with ppo
 11160028 new with impala
 11163398 batch size 512 -> 8, steps 12e6
-11163409 impala starpilot
-11163415 ppo starpilot
+11163409 impala starpilot - wrong action
+11163415 ppo starpilot - wrong action
+
+11164266 ppo startpilot 15 numaction
+11164267 impala starpilot 15 numaction

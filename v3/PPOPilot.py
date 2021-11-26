@@ -13,7 +13,7 @@ entropy_coef = .01
 c1 = 0.5
 c2 = 0.1
 
-num_actions = 4
+num_actions = 15
 in_channels = 3
 feature_dim = 64
 
