@@ -8,3 +8,8 @@ make sure action space is correct.
 train with different seeds to make sure its not a lucky batch
 
 make sure test set and validation set are different.
+
+
+JobID's:
+11159640 new with ppo
+11160028 new with impala
