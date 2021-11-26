@@ -17,7 +17,7 @@ num_actions = 4
 in_channels = 3
 feature_dim = 64
 
-env_name = 'maze'
+env_name = 'starpilot'
 use_background=False
 
 ### num_levels easy = 200, hard = 500

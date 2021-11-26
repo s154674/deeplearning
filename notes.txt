@@ -13,3 +13,6 @@ make sure test set and validation set are different.
 JobID's:
 11159640 new with ppo
 11160028 new with impala
+11163398 batch size 512 -> 8, steps 12e6
+11163409 impala starpilot
+11163415 ppo starpilot
