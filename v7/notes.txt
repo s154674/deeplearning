@@ -1,0 +1,19 @@
+bsub < maze_train.sh
+
+change queue and file params in re_pol_train.sh
+bsub < re_pol_train.sh
+change encoder (ppo -> imapala)
+bsub < re_pol_train.sh
+
+change queue and file params in train.sh
+bsub < train.sh
+change encoder (ppo -> imapala)
+bsub < train.sh
+
+
+
+11239654 maze
+11239656 re pol ppo 1
+11239659 nore ppo 1
+11239661 re pol impala 1?
+11239665 nore impala 1

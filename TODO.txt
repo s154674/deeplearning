@@ -1,0 +1,108 @@
+Policies:
+stabelized (this also train)
+non-stabelized (this trains on our code)
+
+Encoders:
+IMPALA
+PPO
+
+reset policy
+non-reset
+
+## number levels?
+##50 200 
+
+do validation loop for different checkpoints.
+
+
+/work3/heltjo/Johan
+1 = non stabelized
+2 = stableized
+r = reset
+11237778
+PPO 1 
+11237779
+PPO 2
+11237781
+IMPALA 2
+11237783
+IMPALA 1
+11237787
+PPO 1 r
+11237788
+PPO 2 r
+11237789
+IMPALA 1 r
+11237790
+IMPALA 2 r
+
+
+RESET
+
+  Non STABELIZED
+    PPO 
+	75
+	200
+	500
+    IMPALA
+	75
+	200
+	500
+
+NonRESET
+
+  Non STABELIZED
+    PPO 
+	75
+	200
+	500
+    IMPALA
+	75
+	200
+	500
+
+RESET
+Non STABELIZED
+    PPO 
+	200
+
+NonRESET
+Non STABELIZED
+    PPO 
+	200
+
+12
+
+bsub < maze_train.sh
+
+change queue and file params in re_pol_train.sh
+bsub < re_pol_train.sh
+change encoder (ppo -> imapala)
+bsub < re_pol_train.sh
+
+change queue and file params in train.sh
+bsub < train.sh
+change encoder (ppo -> imapala)
+bsub < train.sh
+
+nosta_ppo_no_re_75.out
+nosta_ppo_no_re_200.out
+nosta_ppo_no_re_500.out
+
+nosta_impala_no_re_75.out
+nosta_impala_no_re_200.out
+nosta_impala_no_re_500.out
+
+nosta_ppo_re_75.out
+nosta_ppo_re_200.out -- have with sta
+nosta_ppo_re_500.out -- have with sta
+
+nosta_impala_re_75.out
+nosta_impala_re_200.out -- have with sta
+nosta_impala_re_500.out -- have with sta
+
+
+cp re_pol_train.sh to v7 (overwrite) from  /zhome/6b/c/109916/v7
+vi re_pol_train.sh ppo/impala 1/2 
+bsub < re_pol_train.sh 
+

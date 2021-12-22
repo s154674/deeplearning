@@ -1,0 +1,16 @@
+cffi==1.15.0
+cloudpickle==2.0.0
+filelock==3.4.0
+glcontext==2.3.4
+glfw==1.12.0
+gym==0.21.0
+gym3==0.3.3
+imageio==2.11.0
+imageio-ffmpeg==0.3.0
+moderngl==5.6.4
+numpy==1.21.4
+Pillow==8.4.0
+procgen==0.10.4
+pycparser==2.21
+torch==1.10.0
+typing-extensions==4.0.0
